@@ -13,11 +13,15 @@ $(function() {
 	    $.ajax({
 	        url : "create_post/", // the endpoint
 	        type : "POST", // http method
-	        data : {$('#post-form').seralize()}, // data sent with the post request
+	        data : {
+	        	csrfmiddlewaretoken: $('#post-form input[name="csrfmiddlewaretoken"]').val(),
+	        	the_post: $('#post-text').val(),
+	        }, // data sent with the post request
 	        // handle a successful response
 	        success : function(json) {
 	            $('#post-text').val(''); // remove the value from the input
 	            console.log(json); // log the returned json to the console
+	            $("#talk").prepend("<li><strong>"+json.text+"</strong> - <em> "+json.author+"</em> - <span> "+json.created+"</span></li>");
 	            console.log("success"); // another sanity check
 	        },
 

@@ -14,6 +14,7 @@
             <div class="fieldWrapper">
                 {{ form.text }}
             </div>
+            <div id="results"></div> <!-- errors go here -->
             <input type="submit" value="Post" class="tiny button">
         </form>
     </div>
@@ -22,7 +23,7 @@
 <!-- The feed -->
 <div class="row white">
     <div class="columns large-12">
-        <ul>
+        <ul id="talk">
             {% for post in all_posts %}
                 <li>
                     <strong>{{ post.text }}</strong> -
