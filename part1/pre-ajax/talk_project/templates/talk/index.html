@@ -9,7 +9,7 @@
 </div>
 <div class="row white">
     <div class="columns large-12">
-        <form action="/create_post/" method="POST">
+        <form action="/create_post/" method="POST" id="post-form">
             {% csrf_token %}
             <div class="fieldWrapper">
                 {{ form.text }}
@@ -33,5 +33,7 @@
         </ul>
     </div>
 </div>
+
+<script src="static/scripts/main.js"></script>
 
 {% endblock %}

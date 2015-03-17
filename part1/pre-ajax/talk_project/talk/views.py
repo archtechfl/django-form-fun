@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from talk.models import Post
 from talk.forms import PostForm
 
@@ -20,7 +20,7 @@ def create_post(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return HttpResponseRedirect('/')
+            return HttpResponse()
     else:
         form = PostForm()
     return render(request, 'post.html', {'form': form})
